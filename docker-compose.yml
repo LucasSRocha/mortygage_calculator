@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  web:
+    build: .
+    command: [ "./run_web.sh" ]
+    volumes:
+      - .:/webapps
+    ports:
+      - "8000:8000"
