@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "mortygage-calculator"
+version = "0.1.0"
+description = ""
+authors = ["Lucas Rocha"]
+readme = "README.md"
+packages = [{include = "mortygage_calculator"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+httpx = "^0.23.3"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]
+pythonpath = "."
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+atomic = true
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
