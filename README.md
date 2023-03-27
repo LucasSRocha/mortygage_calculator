@@ -1,7 +1,7 @@
-# mortygage_calculator# mortygage_calculator
+# mortygage_calculator
 
 <p align="center">
-  <img src="https://github.com/lucassrocha/lucassrocha/blob/main/morty.gif" alt="morty oh gee" >
+  <img src="https://raw.githubusercontent.com/LucasSRocha/mortygage_calculator/main/morty.gif" alt="morty oh gee" >
 </p>
 
 ## Objective of this repo
