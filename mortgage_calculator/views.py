@@ -3,19 +3,19 @@ from decimal import Decimal
 from fastapi import APIRouter
 from pydantic import BaseModel, condecimal, conint, validator
 
-from .enums import MortgagePaymentOptions
-from .mortgage_payments import calculate_mortgage_payment
-from .validator import validate_minimum_down_payment
+from mortgage_calculator.enums import MortgagePaymentOptions
+from mortgage_calculator.mortgage_payments import calculate_mortgage_payment
+from mortgage_calculator.validator import validate_minimum_down_payment
 
 router = APIRouter(prefix="/calculator", tags=["calculator"])
 
 
 class CalculateMortgageBody(BaseModel):
-    principal: Decimal
+    principal: condecimal(gt=0)
     yearly_interest: condecimal(gt=0, le=1)
     years: conint(ge=5, le=30)
     frequency: MortgagePaymentOptions = MortgagePaymentOptions.MONTHLY
-    down_payment: Decimal
+    down_payment: condecimal(ge=0)
 
     @validator("down_payment")
     def validate_down_payment(cls, v, values):

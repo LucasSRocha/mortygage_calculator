@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from .enums import MORTGAGE_MONTHS_PAYMENTS_MAPPING, MortgagePaymentOptions
+from mortgage_calculator.enums import MORTGAGE_MONTHS_PAYMENTS_MAPPING, MortgagePaymentOptions
 
 
 def monthly_mortgage_payment(
