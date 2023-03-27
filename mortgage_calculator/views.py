@@ -10,31 +10,32 @@ from mortgage_calculator.validator import validate_minimum_down_payment
 router = APIRouter(prefix="/calculator", tags=["calculator"])
 
 
-class CalculateMortgageBody(BaseModel):
-    principal: condecimal(gt=0)
+class CalculateMortgageSchema(BaseModel):
+    listing_price: condecimal(gt=0)
     yearly_interest: condecimal(gt=0, le=1)
     years: conint(ge=5, le=30)
     frequency: MortgagePaymentOptions = MortgagePaymentOptions.MONTHLY
     down_payment: condecimal(ge=0)
 
     @validator("down_payment")
-    def validate_down_payment(cls, v, values):
+    def validate_down_payment_amount(cls, v, values):
         value = Decimal(v)
-        if not validate_minimum_down_payment(principal=values["principal"], down_payment=value):
-            raise ValueError("Down Payment insuficient for the principal amount")
-        elif value > values["principal"]:
-            raise ValueError("Down Payment is bigger than the principal")
-        elif value == values["principal"]:
-            raise ValueError("Down Payment is equal to the principal amount")
+        listing_price = values.get("listing_price",0)
+        if not validate_minimum_down_payment(listing_price=listing_price, down_payment=value):
+            raise ValueError("Down Payment insuficient for the Listing Price")
+        elif value > listing_price:
+            raise ValueError("Down Payment is bigger than the Listing Price")
+        elif value == listing_price:
+            raise ValueError("Down Payment is equal to the Listing Price")
 
         return value
 
 
 @router.post("/")
-def calculate_mortgage_payments(body: CalculateMortgageBody):
+def calculate_mortgage_payments(body: CalculateMortgageSchema):
     return {
         "payment_amount": calculate_mortgage_payment(
-            principal=body.principal,
+            listing_price=body.listing_price,
             yearly_interest=body.yearly_interest,
             years=body.years,
             frequency=body.frequency,

@@ -9,7 +9,7 @@ from mortgage_calculator.mortgage_payments import (
 
 
 @pytest.mark.parametrize(
-    "principal, interest, frequency, years, expected, down_payment",
+    "listing_price, interest, frequency, years, expected, down_payment",
     [
         (
             Decimal(20_000),
@@ -53,9 +53,9 @@ from mortgage_calculator.mortgage_payments import (
         ),
     ],
 )
-def test_schedule_payment_amount(principal, interest, frequency, years, expected, down_payment):
+def test_schedule_payment_amount(listing_price, interest, frequency, years, expected, down_payment):
     result = calculate_mortgage_payment(
-        principal=principal,
+        listing_price=listing_price,
         yearly_interest=interest,
         frequency=frequency,
         years=years,

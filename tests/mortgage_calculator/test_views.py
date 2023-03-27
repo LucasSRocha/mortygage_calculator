@@ -9,7 +9,7 @@ client = TestClient(app)
 @pytest.fixture
 def mortgage_view_payload():
     return {
-        "principal": 10_000,
+        "listing_price": 10_000,
         "yearly_interest": 0.05,
         "years": 5,
         "frequency": "MONTHLY",
@@ -26,9 +26,9 @@ def test_calculate_mortgage_payments_view_200(mortgage_view_payload):
 @pytest.mark.parametrize(
     "payload",
     [
-        {"principal": 5_000, "down_payment": 10_000},
-        {"principal": 5_000, "down_payment": 5_000},
-        {"principal": 100_000, "down_payment": 1_000},
+        {"listing_price": 5_000, "down_payment": 10_000},
+        {"listing_price": 5_000, "down_payment": 5_000},
+        {"listing_price": 100_000, "down_payment": 1_000},
         {"years": 4},
         {"years": 31},
         {"yearly_interest": 0},

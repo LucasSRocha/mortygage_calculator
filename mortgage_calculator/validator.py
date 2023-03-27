@@ -11,25 +11,25 @@ from mortgage_calculator.constants import (
 )
 
 
-def validate_low_tier_house_down_payment(down_payment: Decimal, principal: Decimal) -> bool:
-    return down_payment >= (principal * FIVE_PERCENT).quantize(Decimal("0.01"))
+def validate_low_tier_house_down_payment(down_payment: Decimal, listing_price: Decimal) -> bool:
+    return down_payment >= (listing_price * FIVE_PERCENT).quantize(Decimal("0.01"))
 
 
-def validate_mid_tier_house_down_payment(down_payment: Decimal, principal: Decimal) -> bool:
-    return down_payment >= ((principal - HALF_MILLION) * TEN_PERCENT + FIVE_PERCENT * HALF_MILLION).quantize(
+def validate_mid_tier_house_down_payment(down_payment: Decimal, listing_price: Decimal) -> bool:
+    return down_payment >= ((listing_price - HALF_MILLION) * TEN_PERCENT + FIVE_PERCENT * HALF_MILLION).quantize(
             Decimal("0.01")
         )
 
 
-def validate_high_tier_house_down_payment(down_payment: Decimal, principal: Decimal) -> bool:
-    return down_payment >= (TWENTY_PERCENT * principal).quantize(Decimal("0.01"))
+def validate_high_tier_house_down_payment(down_payment: Decimal, listing_price: Decimal) -> bool:
+    return down_payment >= (TWENTY_PERCENT * listing_price).quantize(Decimal("0.01"))
 
 
-def validate_minimum_down_payment(principal: Decimal, down_payment: Decimal) -> bool:
-    if principal <= HALF_MILLION:
-        return validate_low_tier_house_down_payment(down_payment=down_payment, principal=principal)
-    if HALF_MILLION < principal < ONE_MILLION:
-        return validate_mid_tier_house_down_payment(down_payment=down_payment, principal=principal)
-    return validate_high_tier_house_down_payment(down_payment=down_payment, principal=principal)
+def validate_minimum_down_payment(listing_price: Decimal, down_payment: Decimal) -> bool:
+    if listing_price <= HALF_MILLION:
+        return validate_low_tier_house_down_payment(down_payment=down_payment, listing_price=listing_price)
+    if HALF_MILLION < listing_price < ONE_MILLION:
+        return validate_mid_tier_house_down_payment(down_payment=down_payment, listing_price=listing_price)
+    return validate_high_tier_house_down_payment(down_payment=down_payment, listing_price=listing_price)
 
 

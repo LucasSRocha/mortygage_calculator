@@ -15,16 +15,16 @@ def monthly_mortgage_payment(
 
 
 def calculate_mortgage_payment(
-    principal: Decimal,
+    listing_price: Decimal,
     yearly_interest: Decimal,
     years: int,
     frequency: MortgagePaymentOptions,
     down_payment: Decimal,
 ) -> Decimal:
-    adjusted_principal = principal - down_payment
+    principal = listing_price - down_payment
     adjusted_months, adjusted_frequency = MORTGAGE_MONTHS_PAYMENTS_MAPPING[frequency]
     monthly_payment = monthly_mortgage_payment(
-        principal=adjusted_principal, yearly_interest=yearly_interest, years=years
+        principal=principal, yearly_interest=yearly_interest, years=years
     )
     adjusted_payment = monthly_payment * adjusted_months / adjusted_frequency
     return adjusted_payment.quantize(Decimal("0.01"))

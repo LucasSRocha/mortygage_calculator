@@ -4,7 +4,7 @@ from mortgage_calculator.validator import Decimal, validate_minimum_down_payment
 
 
 @pytest.mark.parametrize(
-    "principal, down_payment, expected",
+    "listing_price, down_payment, expected",
     [
         (Decimal(10_000), Decimal(500), True),
         (Decimal(10_000), Decimal(400), False),
@@ -19,5 +19,5 @@ from mortgage_calculator.validator import Decimal, validate_minimum_down_payment
         (Decimal(1_000_000), Decimal(999_999), True),
     ],
 )
-def test_minimum_down_payment(principal, down_payment, expected):
-    assert validate_minimum_down_payment(principal=principal, down_payment=down_payment) == expected
+def test_minimum_down_payment(listing_price, down_payment, expected):
+    assert validate_minimum_down_payment(listing_price=listing_price, down_payment=down_payment) == expected
