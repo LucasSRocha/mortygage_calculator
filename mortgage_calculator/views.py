@@ -20,7 +20,7 @@ class CalculateMortgageSchema(BaseModel):
     @validator("down_payment")
     def validate_down_payment_amount(cls, v, values):
         value = Decimal(v)
-        listing_price = values.get("listing_price",0)
+        listing_price = values.get("listing_price", 0)
         if not validate_minimum_down_payment(listing_price=listing_price, down_payment=value):
             raise ValueError("Down Payment insuficient for the Listing Price")
         elif value > listing_price:

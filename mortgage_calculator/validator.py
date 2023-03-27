@@ -17,8 +17,8 @@ def validate_low_tier_house_down_payment(down_payment: Decimal, listing_price: D
 
 def validate_mid_tier_house_down_payment(down_payment: Decimal, listing_price: Decimal) -> bool:
     return down_payment >= ((listing_price - HALF_MILLION) * TEN_PERCENT + FIVE_PERCENT * HALF_MILLION).quantize(
-            Decimal("0.01")
-        )
+        Decimal("0.01")
+    )
 
 
 def validate_high_tier_house_down_payment(down_payment: Decimal, listing_price: Decimal) -> bool:
@@ -31,5 +31,3 @@ def validate_minimum_down_payment(listing_price: Decimal, down_payment: Decimal)
     if HALF_MILLION < listing_price < ONE_MILLION:
         return validate_mid_tier_house_down_payment(down_payment=down_payment, listing_price=listing_price)
     return validate_high_tier_house_down_payment(down_payment=down_payment, listing_price=listing_price)
-
-

@@ -1,6 +1,9 @@
 from decimal import Decimal
 
-from mortgage_calculator.enums import MORTGAGE_MONTHS_PAYMENTS_MAPPING, MortgagePaymentOptions
+from mortgage_calculator.enums import (
+    MORTGAGE_MONTHS_PAYMENTS_MAPPING,
+    MortgagePaymentOptions,
+)
 
 
 def monthly_mortgage_payment(
@@ -23,8 +26,6 @@ def calculate_mortgage_payment(
 ) -> Decimal:
     principal = listing_price - down_payment
     adjusted_months, adjusted_frequency = MORTGAGE_MONTHS_PAYMENTS_MAPPING[frequency]
-    monthly_payment = monthly_mortgage_payment(
-        principal=principal, yearly_interest=yearly_interest, years=years
-    )
+    monthly_payment = monthly_mortgage_payment(principal=principal, yearly_interest=yearly_interest, years=years)
     adjusted_payment = monthly_payment * adjusted_months / adjusted_frequency
     return adjusted_payment.quantize(Decimal("0.01"))
