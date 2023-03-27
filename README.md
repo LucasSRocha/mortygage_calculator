@@ -6,7 +6,7 @@
 
 ## Objective of this repo
 Oh geez, how to write this?
-The objective here is to demonstrate a mortgage calculator api that follows the guidelines of the British Columbia Province.
+The objective here is to demonstrate a mortgage calculator api that follows the guidelines of the Province of British Columbia.
 
 ## How to use
 ### Requirements
