@@ -1,12 +1,15 @@
-# mortygage_calculator# mortygage_calculator
+# mortygage_calculator
 
 <p align="center">
-  <img src="https://github.com/lucassrocha/lucassrocha/blob/main/morty.gif" alt="morty oh gee" >
+  <img src="https://raw.githubusercontent.com/LucasSRocha/mortygage_calculator/main/morty.gif" alt="morty oh gee" >
 </p>
 
 ## Objective of this repo
 Oh geez, how to write this?
-The objective here is to demonstrate a mortgage calculator api that follows the guidelines of the British Columbia Province.
+The objective here is to demonstrate a mortgage calculator api that follows the guidelines of the Province of British Columbia.
+
+## Environments
+[dev](https://mortygagecalculator1-8rochalucas.b4a.run/docs)
 
 ## How to use
 ### Requirements
@@ -28,10 +31,10 @@ This will build the image and run the container making the server available at `
 
 
 2. running the server locally
-To do so you need to do a couple steps:
-    2.1 create a virtual environment to isolate the project
-    2.2 install the dependencies
-    2.3 run the start command
+To do so you need to do a couple steps:  
+    2.1 create a virtual environment to isolate the project.  
+    2.2 install the dependencies.  
+    2.3 run the start command.  
 
 ```shell
 $ python -m virtualenv venv
@@ -46,8 +49,7 @@ This will start the server locally and make it available at `localhost:8000`
 To execute tests you can use the `make test-coverage` when inside the local virtual environment.
 
 ## Thought process/ Ideas
-The objective of this project was to provide an idea of an open api endpoint dedicated to calculate mortgage payments in a project that handles more things related to loans.
-Considering the two days to deliver constraint I've decided to built the API with fastAPI because it provides solid and fast (pun not intended) base to expand the domain with easy documentation and validation for our service.
+The objective of this project was to propose an open API endpoint specifically designed for calculating mortgage payments, as part of a larger project that handles other aspects related to loans. Given the tight two-day deadline for this project, I decided to build the API using fastAPI. Its solid and speedy framework, coupled with its easy-to-use documentation and validation features, made it the ideal choice for rapidly expanding the domain of our service.
 
-Talking about the whole project the vision would be to construct this backend plus the frontend with a bff(backend for frontend) to provide an interface in which we can comunicate with the primary backend without exposing it and having a place in which we can do any data transformation if necessary.
+The vision I had for this project was to construct both the backend and frontend, along with a Backend for Frontend (BFF) interface. The BFF would allow us to communicate with the primary backend without exposing it, and it would also serve as a location for any necessary data transformation.
 
